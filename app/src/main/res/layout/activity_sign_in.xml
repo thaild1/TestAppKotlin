@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_margin"
+            tools:context=".activity.SignInActivity">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signUpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:layout_marginStart="@dimen/default_margin"
+                android:background="@android:color/transparent"
+                android:text="@string/sign_up"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16"
+                android:onClick="@{() -> viewModel.doSignUp()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/termTextView" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/signupCheckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:buttonTint="@color/checkbox_color"
+                android:text="@string/login_checkbox_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14"
+                app:layout_constraintStart_toStartOf="@id/passwordInputLayout"
+                app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/signInButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:background="@android:color/transparent"
+                android:onClick="@{() -> viewModel.doSignIn()}"
+                android:src="@drawable/sign_in_icon"
+                app:layout_constraintBottom_toBottomOf="@id/signUpButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/signUpButton"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/loginImageView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/image_with_gradient_overlay"
+                app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/loginTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:text="@string/login_header"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_22"
+                app:layout_constraintBottom_toBottomOf="@id/loginImageView" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/termTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_size_12"
+                app:layout_constraintTop_toBottomOf="@id/signupCheckbox"
+                tools:text="@string/term_txt" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:hint="@string/login_your_email"
+                android:textColorHint="@android:color/darker_gray"
+                app:hintTextColor="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/loginTitle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:text="@={viewModel.emailField}"
+                    android:textColor="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:hint="@string/login_your_password"
+                android:textColorHint="@android:color/darker_gray"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@android:color/darker_gray"
+                app:hintTextColor="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/emailInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:text="@={viewModel.passwordField}"
+                    android:textColor="@color/white" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/passwordWeekLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.passwordStrengthLevel}"
+                android:textColor="@color/defaultColor"
+                app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout"
+                app:layout_constraintEnd_toEndOf="@+id/passwordInputLayout"/>
+
+            <include
+                android:id="@+id/loading_bar"
+                layout="@layout/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.miagi.testappkotlin.viewmodel.SignInViewModel" />
+    </data>
+
+
+</layout>

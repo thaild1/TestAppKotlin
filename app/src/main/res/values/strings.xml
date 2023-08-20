@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TestAppKotlin</string>
+    <string name="login_header">Let\'s get you started!</string>
+    <string name="login_your_email">Your email</string>
+    <string name="login_your_password">Your password</string>
+    <string name="login_checkbox_title">I am over 16 years of age</string>
+    <string name="term_txt">By clicking Sign Up, you are indicating that you have read and agree the Terms of Service and Privacy Policy</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="sign_up">Sign up</string>
+    <string name="category_list_title">Wellcome to Flutter Test</string>
+    <string name="category_list_body_msg">Please select categories what you would like to see on your feed. You can set this later on Filter.</string>
+    <string name="done_txt">Done</string>
 </resources>

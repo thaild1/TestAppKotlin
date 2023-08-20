@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/sign_up_bg" />
+    <item>
+        <shape>
+            <gradient
+                android:endColor="@android:color/transparent"
+                android:startColor="@color/black"
+                android:angle="90" />
+        </shape>
+    </item>
+</layer-list>
